@@ -2,6 +2,7 @@ package com.version1.TestSpringBootApp.controller;
 
 import com.version1.TestSpringBootApp.model.Person;
 import com.version1.TestSpringBootApp.repository.PersonRepository;
+import com.version1.TestSpringBootApp.service.PersonFactory;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/test")
 public class TestController {
 
-    private final PersonRepository personRepository;
+    private final PersonFactory personFactory;
 
-    public TestController(PersonRepository personRepo) {
-        this.personRepository = personRepo;
+    public TestController(PersonFactory personFactory) {
+        this.personFactory = personFactory;
     }
 
     @GetMapping
@@ -21,38 +22,35 @@ public class TestController {
         return "Hello Everyone";
     }
 
-    @PostMapping
-    @Transactional
-    public Person testPostController(@RequestBody @Valid Person person) {
-        //never hit this line
-        Person p = personRepository.save(person); // throws new Database error
+//    @PostMapping
+//    @Transactional
+//    public Person testPostController(@RequestBody @Valid Person person) {
+//        //never hit this line
+//        Person p = personRepository.save(person); // throws new Database error
+//
+//        System.out.println(p.getFirstName() + " " + p.getSurname());
+//        return p;
+//    }
 
-        System.out.println(p.getFirstName() + " " + p.getSurname());
-        return p;
-    }
-
-    @PostMapping("/path/firstname/{firstName}/surname/{surname}/")
-//    @PostMapping("{firstName}/{surname}")
+    @PostMapping("/path/firstname/{firstName}/surname/{surname}/handleCode/{handleCode}")
     public Person testPath(
             @PathVariable String firstName,
-            @PathVariable String surname
+            @PathVariable String surname,
+            @PathVariable String handleCode
     ) {
-        Person p = new Person(firstName, surname);
-        personRepository.save(p);
-        System.out.println(p.getFirstName() + " " + p.getSurname());
-        return p;
+        Person person = new Person(firstName, surname);
+        personFactory.returnService(handleCode).handlePersonData(person);
+        return person;
     }
 
-    @PostMapping("/requestParam")
-//    @PostMapping("{firstName}/{surname}")
-    public Person testVariable(
-            @RequestParam String firstName,
-            @RequestParam String surname
-    ) {
-        Person p = new Person(firstName, surname);
-        personRepository.save(p);
-        System.out.println(p.getFirstName() + " " + p.getSurname());
-        return p;
-    }
+//    @PostMapping("/requestParam")
+////    @PostMapping("{firstName}/{surname}")
+//    public Person testVariable(
+//            @RequestParam String firstName,
+//            @RequestParam String surname
+//    ) {
+//        personFactory.
+//
+//    }
 
 }
