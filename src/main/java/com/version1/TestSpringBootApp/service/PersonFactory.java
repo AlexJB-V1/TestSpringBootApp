@@ -8,9 +8,12 @@ public class PersonFactory {
     private final PrintDetailsPersonService printDetailsPersonService;
     private final SaveToDBPersonService saveToDBPersonService;
 
-    public PersonFactory(PrintDetailsPersonService printDetailsPersonService, SaveToDBPersonService saveToDBPersonService) {
+    private final ReverseService reverseService;
+
+    public PersonFactory(PrintDetailsPersonService printDetailsPersonService, SaveToDBPersonService saveToDBPersonService, ReverseService reverseService) {
         this.printDetailsPersonService = printDetailsPersonService;
         this.saveToDBPersonService = saveToDBPersonService;
+        this.reverseService = reverseService;
     }
 
     public PersonService returnService(String handleCode) {
@@ -18,6 +21,8 @@ public class PersonFactory {
             return saveToDBPersonService;
         } else if ("print".equals(handleCode)) {
             return printDetailsPersonService;
+        } else if ("reverse".equals(handleCode)){
+            return reverseService;
         }
         return printDetailsPersonService;
     }
