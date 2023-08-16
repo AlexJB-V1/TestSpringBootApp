@@ -35,11 +35,11 @@ public class TestController {
 
     @PostMapping("/path/firstname/{firstName}/surname/{surname}/handleCode/{handleCode}")
     public Person testPath(
-            @PathVariable String firstName,
+            @PathVariable String firstNames,
             @PathVariable String surname,
             @PathVariable HandleCode handleCode
     ) {
-        Person person = new Person(firstName, surname);
+        Person person = new Person(firstNames, surname);
         personFactory.returnService(handleCode).handlePersonData(person);
         return person;
     }
