@@ -1,5 +1,6 @@
 package com.version1.TestSpringBootApp.controller;
 
+import com.version1.TestSpringBootApp.model.HandleCode;
 import com.version1.TestSpringBootApp.model.Person;
 import com.version1.TestSpringBootApp.repository.PersonRepository;
 import com.version1.TestSpringBootApp.service.PersonFactory;
@@ -36,7 +37,7 @@ public class TestController {
     public Person testPath(
             @PathVariable String firstName,
             @PathVariable String surname,
-            @PathVariable String handleCode
+            @PathVariable HandleCode handleCode
     ) {
         Person person = new Person(firstName, surname);
         personFactory.returnService(handleCode).handlePersonData(person);
