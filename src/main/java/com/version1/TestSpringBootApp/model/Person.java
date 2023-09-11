@@ -22,6 +22,10 @@ public class Person {
     @Pattern(regexp = "^[a-zA-Z]*$", message = "Aa-Zz Only")
     private String surname;
 
+    public Person() {
+    }
+
+
     public Person(String firstName, String surname) {
         this.firstName = firstName;
         this.surname = surname;
