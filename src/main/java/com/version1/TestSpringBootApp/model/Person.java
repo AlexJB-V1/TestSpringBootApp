@@ -31,6 +31,12 @@ public class Person {
         this.surname = surname;
     }
 
+    public Person(String firstName, String surname, int id) {
+        this.firstName = firstName;
+        this.surname = surname;
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -43,7 +49,20 @@ public class Person {
         return surname;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", id='" + id + '\'' +
+                '}';
     }
 }
