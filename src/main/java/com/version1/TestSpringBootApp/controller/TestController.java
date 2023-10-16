@@ -2,6 +2,9 @@ package com.version1.TestSpringBootApp.controller;
 
 import com.version1.TestSpringBootApp.model.HandleCode;
 import com.version1.TestSpringBootApp.model.Person;
+import com.version1.TestSpringBootApp.model.polymorphic.standard.ElectricVehicle;
+import com.version1.TestSpringBootApp.model.polymorphic.standard.FuelVehicle;
+import com.version1.TestSpringBootApp.model.polymorphic.standard.Vehicle;
 import com.version1.TestSpringBootApp.repository.PersonRepository;
 import com.version1.TestSpringBootApp.service.PersonFactory;
 import jakarta.transaction.Transactional;
@@ -36,4 +39,25 @@ public class TestController {
         return person;
     }
 
+    @PostMapping("vehicle")
+    public String testPath(@RequestBody Vehicle v) { // electric, fuel, hydrogen, aeroplane
+//        switch (v) {
+//            ElectricVehicle.class ->{// do something}
+//            FuelVehicle.class ->{// do something else}
+//            else{
+//                        // something else
+//                    }
+//            }
+//            }
+        if (v.getClass() == ElectricVehicle.class) {
+            // do some electric stuff
+        } else if (v.getClass() == FuelVehicle.class) {
+            // fuel stuff
+        }
+        return "";
+    }
+
+    private void printType(Vehicle v) {
+        System.out.println(v.jacksonValue);
+    }
 }

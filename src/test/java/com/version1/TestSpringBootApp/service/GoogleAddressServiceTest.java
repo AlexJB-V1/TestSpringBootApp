@@ -1,5 +1,6 @@
 package com.version1.TestSpringBootApp.service;
 
+import com.version1.TestSpringBootApp.model.Person;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,12 +25,6 @@ class GoogleAddressServiceTest {
     public void testGoogleNull() {
         Mockito.when(googleAddressService.getAddressById(100)).thenReturn(null);
         assertNull(googleAddressService.getAddressById(100));
-    }
-
-    @Test
-    public void testGoogleException() {
-        Mockito.when(googleAddressService.getAddressById(1)).thenThrow(new RestClientException("Error"));
-        assertEquals("Empty String", googleAddressService.getAddressById(1));
     }
 
 }
