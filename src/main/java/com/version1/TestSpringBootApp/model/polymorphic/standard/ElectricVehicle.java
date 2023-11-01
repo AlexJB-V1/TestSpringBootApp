@@ -11,4 +11,9 @@ public class ElectricVehicle extends Vehicle {
 
     String autonomy;
     String chargingTime;
+
+    @Override
+    public void drive() {
+
+    }
 }
