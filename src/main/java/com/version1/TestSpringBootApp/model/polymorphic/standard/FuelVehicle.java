@@ -9,4 +9,9 @@ public class FuelVehicle extends Vehicle {
 
     String fuelType;
     String transmissionType;
+
+    @Override
+    public void drive() {
+        //
+    }
 }
