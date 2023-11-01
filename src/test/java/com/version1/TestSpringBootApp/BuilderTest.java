@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 public class BuilderTest {
 
     @Test
-    @Disabled
     public void builderTest() {
 
         UserOptional u = new UserOptional.UserBuilder()
