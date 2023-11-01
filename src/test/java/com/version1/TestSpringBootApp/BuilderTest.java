@@ -30,7 +30,6 @@ public class BuilderTest {
     }
 
     @Test
-    @Disabled
     public void builderTest3() {
         UserLombok u = UserLombok
                 .builder()
