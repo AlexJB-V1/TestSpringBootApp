@@ -10,4 +10,10 @@ public class CodeQlTestService {
         String[] s = (String[])o;
     }
 
+    static public String selfAssignment(String o) {
+        String s = "";
+        s = s;
+        return s;
+    }
+
 }
